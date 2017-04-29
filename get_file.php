@@ -7,6 +7,6 @@ if (!empty($file_name) && file_exists($dirname . '/' . $file_name)) {
     $response = json_decode($content, true);
 } else {
     header("HTTP/1.0 404 Not Found");
-    /*exit();*/
+    exit();
 }
 ?>
