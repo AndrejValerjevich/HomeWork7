@@ -1,7 +1,12 @@
 <?php
 //Файл для получения json-файла и его декодирования
-$file_name = $_GET['file_name'];
 $dirname = 'json_files';
-$content = file_get_contents($dirname.'/'.$file_name);
-$response = json_decode($content,true);
+$file_name = $_GET['file_name'];
+if (!empty($file_name) && file_exists($dirname . '/' . $file_name)) {
+    $content = file_get_contents($dirname . '/' . $file_name);
+    $response = json_decode($content, true);
+} else {
+    header("HTTP/1.0 404 Not Found");
+    /*exit();*/
+}
 ?>
